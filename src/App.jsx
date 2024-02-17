@@ -2,6 +2,14 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 
 const App = () => {
+  const comp = useRef(null);
+
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {}, comp);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <div className="">
       <div className="absolute h-screen top-0 left-0 bg-gray-200 font-spaceGrotesk z-10 w-full flex flex-col gap-10 tracking-tight">
