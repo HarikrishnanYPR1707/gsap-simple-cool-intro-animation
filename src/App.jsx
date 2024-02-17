@@ -7,6 +7,31 @@ const App = () => {
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
       const t1 = gsap.timeline();
+
+      t1.from("#intro-slider", {
+        xPercent: "-100",
+        duration: 1.3,
+        delay: 0.3,
+      })
+        .from(["#title-1", "#title-2", "#title-3"], {
+          opacity: 0,
+          y: "25",
+          stagger: 0.5,
+        })
+        .to(["#title-1", "#title-2", "#title-3"], {
+          opacity: 0,
+          y: "-25",
+          delay: 0.3,
+          stagger: 0.5,
+        })
+        .to("#intro-slider", {
+          xPercent: "-100",
+          duration: 1.3,
+        })
+        .from("#welcome", {
+          opacity: 0,
+          duration: 1,
+        });
     }, comp);
 
     return () => ctx.revert();
@@ -16,7 +41,7 @@ const App = () => {
     <div ref={comp} className="relative">
       <div
         id="intro-slider"
-        className="absolute h-screen top-0 left-0 bg-gray-200 font-spaceGrotesk z-10 w-full flex flex-col gap-10 tracking-tight"
+        className="absolute overflow-hidden h-screen top-0 left-0 bg-gray-200 font-spaceGrotesk z-10 w-full flex flex-col gap-10 tracking-tight justify-center items-center"
       >
         <h1 className="text-9xl font-bold" id="title-1">
           FrontEnd Developer
