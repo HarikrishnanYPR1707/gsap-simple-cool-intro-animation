@@ -5,7 +5,9 @@ const App = () => {
   const comp = useRef(null);
 
   useLayoutEffect(() => {
-    let ctx = gsap.context(() => {}, comp);
+    let ctx = gsap.context(() => {
+      const t1 = gsap.timeline();
+    }, comp);
 
     return () => ctx.revert();
   }, []);
