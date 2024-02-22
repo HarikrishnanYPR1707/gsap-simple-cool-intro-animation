@@ -8,10 +8,10 @@ const App = () => {
     let ctx = gsap.context(() => {
       const t1 = gsap.timeline();
 
-      t1.from("#intro-slider", {
-        xPercent: "-100",
-        duration: 1.3,
-        delay: 0.3,
+      t1.to("#intro-slider-fader", {
+        opacity: 0,
+        delay: 1,
+        duration: 0.8,
       })
         .from(["#title-1", "#title-2", "#title-3"], {
           opacity: 0,
@@ -43,6 +43,10 @@ const App = () => {
         id="intro-slider"
         className="absolute overflow-hidden h-screen top-0 left-0 bg-gray-200 font-spaceGrotesk z-10 w-full flex flex-col gap-10 tracking-tight justify-center items-center"
       >
+        <div
+          id="intro-slider-fader"
+          className="absolute z-20 inset-0 bg-gray-950"
+        />
         <h1 className="text-9xl font-bold" id="title-1">
           FrontEnd Developer
         </h1>
